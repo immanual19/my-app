@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 
 const SignUp = () => {
+  const location=useLocation();
+  const navigate=useNavigate();
+    let from='/dashboard';
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [passMissMatch,setPassMissmatch]=useState(false);
@@ -22,9 +25,14 @@ const SignUp = () => {
       }
       else{
         await createUserWithEmailAndPassword(data.email,data.password);
-        
+        navigate(from,{ replace: true });
       }  
-    }    
+    }
+    useEffect(()=>{
+      if(user||gUser){
+        navigate(from,{ replace: true });
+      }
+    },[user, gUser, from, navigate])
     return (
         <div className='flex justify-center items-center'>
         <div className="card w-100 bg-base-100 shadow-xl">

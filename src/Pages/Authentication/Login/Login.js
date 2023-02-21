@@ -6,29 +6,28 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import './Login.css';
 const Login = () => {
-  
-    const navigate=useNavigate();
-    const location=useLocation();
-
-    let from=location.state?.from?.pathname || '/';
-
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [remMe,setRemMe]=useState(false);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const navigate=useNavigate();
+  const location=useLocation();
+  let from=location.state?.from?.pathname || '/';
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
-
-    const [remMe, setRemMe]=useState(false);
-
-    const onSubmit=async(data)=>{
-        data.remme=remMe;
-        await signInWithEmailAndPassword(data.email,data.password);
-        
-    }
-
+    useEffect(()=>{
+        if(user||gUser){
+          navigate(from,{ replace: true });
+        }
+      },[user, gUser, from, navigate])
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data =>{
+        console.log(data);
+        signInWithEmailAndPassword(data.email,data.password);
+    } 
+    
     const handleRemChange=()=>{
         if(remMe===false){
             setRemMe(true);
@@ -39,11 +38,7 @@ const Login = () => {
         console.log("Remember me Checked");
     }
     
-    useEffect(()=>{
-      if(user||gUser){
-        navigate(from,{replace:true});
-      }
-    },[user,gUser,from,navigate])
+    
 
     return (
         <div className='login'>
