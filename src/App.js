@@ -14,11 +14,11 @@ function App() {
     >
     </Route>
     <Route
-    path='/signup' element={<Signup/>}
+    path='signup' element={<Signup/>}
     >
     </Route>
     <Route
-    path='/dashboard' element={
+    path='dashboard' element={
       <RequireAuth>
       <Dashboard></Dashboard>
       </RequireAuth>

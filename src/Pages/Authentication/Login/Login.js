@@ -10,7 +10,7 @@ const Login = () => {
     const navigate=useNavigate();
     const location=useLocation();
 
-    let from=location.state?.from?.pathname || '/dashboard';
+    let from=location.state?.from?.pathname || '/';
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
