@@ -22,6 +22,7 @@ import Typography from '@mui/material/Typography';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
+import MainSetup from '../MainSetup/MainSetup';
 
 const drawerWidth = 240;
 
@@ -190,7 +191,7 @@ export default function Dashboard(props: Props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        
+        <MainSetup></MainSetup>
       </Box>
     </Box>
   );
