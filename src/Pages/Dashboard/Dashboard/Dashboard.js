@@ -6,6 +6,8 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -23,7 +25,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import MainSetup from '../MainSetup/MainSetup';
-
+import Table1 from '../Tables/Table1';
 const drawerWidth = 240;
 
 interface Props {
@@ -39,7 +41,10 @@ interface Props {
 export default function Dashboard(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [table1,setTable1]=React.useState(false);
+  const navigate = useNavigate();
+  const [mainSetup, setMainSetup]=React.useState(true);
+  const [login,setLogin]=React.useState(true);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -54,8 +59,18 @@ export default function Dashboard(props: Props) {
     return <p>Error: {error.message}</p>;
   }
 
+  
+
   const logout = () => {
-    signOut(auth);
+    console.log("logout");
+    let cookies = document.cookie.split(';');
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i];
+    var eqPos = cookie.indexOf('=');
+    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+    navigate('/');
   };
 
   const ListData=[
@@ -84,9 +99,13 @@ export default function Dashboard(props: Props) {
   const handleClick=(index)=>{
    if(index===0)
    {
+      setTable1(false);
+      setMainSetup(true);
        console.log("Clicked ",index);
    }
    else if(index===1){
+      setTable1(true);
+      setMainSetup(false);
       console.log("Clicked ",index);
    }
    else if(index===2){
@@ -95,9 +114,12 @@ export default function Dashboard(props: Props) {
    else if(index===3){
       console.log("Clicked ",index);
    }
+   else if(index===4){
+       console.log("logout clicked");
+      logout();
+   }
    else{
-       
-      signOut(auth);
+
    }
 }
 
@@ -191,7 +213,14 @@ export default function Dashboard(props: Props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <MainSetup></MainSetup>
+        {
+          mainSetup && <MainSetup></MainSetup>
+        }
+        
+        {
+          table1 && <Table1></Table1>
+        }
+        
       </Box>
     </Box>
   );

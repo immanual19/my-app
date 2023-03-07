@@ -4,42 +4,41 @@ import { useForm } from "react-hook-form";
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import $ from 'jquery';
 import './Login.css';
 const Login = () => {
-  const [remMe,setRemMe]=useState(false);
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const navigate=useNavigate();
-  const location=useLocation();
-  let from=location.state?.from?.pathname || '/';
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] = useSignInWithEmailAndPassword(auth);
-    useEffect(()=>{
-        if(user||gUser){
-          navigate(from,{ replace: true });
-        }
-      },[user, gUser, from, navigate])
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data =>{
-        console.log(data);
-        signInWithEmailAndPassword(data.email,data.password);
-    } 
-    
-    const handleRemChange=()=>{
-        if(remMe===false){
-            setRemMe(true);
-        }
-        else{
-            setRemMe(false);
-        }
-        console.log("Remember me Checked");
-    }
-    
-    
+  const [remMe,setRemMe]=useState(false);
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit=async(data)=>{
 
+      $.post('http://127.0.0.1:8080/wang/api/Login', { User: data.email, Pwd: data.password })
+    .done(function(returnedData) {
+      if (returnedData.rspCode === '200') {
+        const expires = new Date(Date.now() + 86400 * 1000).toUTCString();
+        document.cookie = "token=" + returnedData.rspData[0].token + ";expires=" + expires + ";path=/";
+        navigate('/dashboard');
+      } else {
+        alert('Login error');
+      }
+    })
+    .fail(function() {
+      alert('There was an error processing your request.');
+    });
+
+    }
+
+
+    const handleRemChange=()=>{
+      if(remMe===false){
+          setRemMe(true);
+      }
+      else{
+          setRemMe(false);
+      }
+      console.log("Remember me Checked");
+  }
+  
     return (
         <div className='login'>
         <h2 className="text-center text-2xl font-bold">Login</h2>
@@ -52,11 +51,7 @@ const Login = () => {
         {...register("email", {
             required:{
                 value:true,
-                message:'Email is Required'
-            },
-            pattern: {
-              value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-              message: 'Provide a valid email'
+                message:'Username'
             }
           })}
         type="text" placeholder="Email Address" className="input input-bordered w-full max-w-xs" />
@@ -76,10 +71,6 @@ const Login = () => {
             required:{
                 value:true,
                 message:'Password is Required'
-            },
-            minLength: {
-              value: 6,
-              message: 'Must be 6 characters or longer'
             }
           })}
         type="text" placeholder="Password" className="input input-bordered w-full max-w-xs" />
@@ -104,11 +95,6 @@ const Login = () => {
 </form>
 
 <p><small>New to App? <Link className='text-primary' to='/signup'>Create New Account</Link></small></p>
-          <div className="divider">OR</div>
-          <button
-          onClick={()=>signInWithGoogle()}
-          className="btn w-full max-w-xs btn-outline btn-success">Continue with Google</button>
-
         </div>
     );
 };

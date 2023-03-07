@@ -9,7 +9,7 @@ const RequireAuth = ({children}) => {
     if(loading){
         return <Loading></Loading>
     }
-    if(!user){
+    if(!document.cookie){
         return <Navigate to='/' state={{ from: location }} replace></Navigate>
     }
     return children;
