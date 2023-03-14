@@ -15,7 +15,7 @@ useEffect(()=>{
   $.post('http://127.0.0.1:8080/wang/api/QueryFileListStatus', {AccessToken:str,FileList:FileIDList})
     .done(function(returnedData) {
       if (returnedData.rspCode === '200') {
-        console.log(returnedData); 
+        console.log("Query File List Status: ",returnedData); 
 
       } else {
         console.error(`Failed to get file list: ${returnedData.rspMsg}`);
