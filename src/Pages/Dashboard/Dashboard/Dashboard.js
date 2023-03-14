@@ -26,6 +26,8 @@ import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import MainSetup from '../MainSetup/MainSetup';
 import Table1 from '../Tables/Table1';
+import Tables from '../Tables/Tables';
+
 const drawerWidth = 240;
 
 interface Props {
@@ -41,10 +43,11 @@ interface Props {
 export default function Dashboard(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [table1,setTable1]=React.useState(false);
+  const [table,setTable]=React.useState(false);
   const navigate = useNavigate();
   const [mainSetup, setMainSetup]=React.useState(true);
   const [login,setLogin]=React.useState(true);
+  const [fileInfo,setFileInfo]=React.useState({});
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -62,7 +65,7 @@ export default function Dashboard(props: Props) {
   
 
   const logout = () => {
-    console.log("logout");
+    //("logout");
     let cookies = document.cookie.split(';');
   for (var i = 0; i < cookies.length; i++) {
     var cookie = cookies[i];
@@ -99,23 +102,29 @@ export default function Dashboard(props: Props) {
   const handleClick=(index)=>{
    if(index===0)
    {
-      setTable1(false);
+      setTable(false);
       setMainSetup(true);
-       console.log("Clicked ",index);
+       //console.log("Clicked ",index);
    }
    else if(index===1){
-      setTable1(true);
+      setTable(true);
       setMainSetup(false);
-      console.log("Clicked ",index);
+      //console.log("Clicked ",index);
    }
    else if(index===2){
-      console.log("Clicked ",index);
+      setTable(false);
+      setMainSetup(false);
+      //console.log("Clicked ",index);
    }
    else if(index===3){
-      console.log("Clicked ",index);
+    setTable(false);
+      setMainSetup(false);
+      //console.log("Clicked ",index);
    }
    else if(index===4){
-       console.log("logout clicked");
+    setTable(false);
+      setMainSetup(false);
+     //  console.log("logout clicked");
       logout();
    }
    else{
@@ -214,11 +223,12 @@ export default function Dashboard(props: Props) {
       >
         <Toolbar />
         {
-          mainSetup && <MainSetup></MainSetup>
+          mainSetup && <MainSetup fileInfo={fileInfo} setFileInfo={setFileInfo}></MainSetup>
         }
         
         {
-          table1 && <Table1></Table1>
+          table && <Tables fileInfo={fileInfo}></Tables>
+          
         }
         
       </Box>

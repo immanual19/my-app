@@ -10,15 +10,15 @@ const FileError = ({setFileError}) => {
 
     return (
         <div>
-<input type="checkbox" id="my-modal-6" class="modal-toggle" checked />
+<input type="checkbox" id="my-modal-6" className="modal-toggle" checked />
 
 
-<div class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">File Error Occurred!</h3>
-    <p class="py-4">You have chosen invalid file to upload</p>
-    <div class="modal-action">
-      <label for="my-modal-6" id="my-button" class="btn" onClick={handleClick}>Close!</label>
+<div className="modal modal-bottom sm:modal-middle">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">File Error Occurred!</h3>
+    <p className="py-4">You have chosen invalid file to upload</p>
+    <div className="modal-action">
+      <label for="my-modal-6" id="my-button" className="btn" onClick={handleClick}>Close!</label>
     </div>
   </div>
 </div>

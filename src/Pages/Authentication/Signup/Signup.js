@@ -41,14 +41,14 @@ const SignUp = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
 
 
-<div class="form-control w-full max-w-xs">
-<label class="label">
-  <span class="label-text">Email</span>
+<div className="form-control w-full max-w-xs">
+<label className="label">
+  <span className="label-text">Email</span>
 </label>
 <input
 type="email"
 placeholder="Your Email"
-class="input input-bordered w-full max-w-xs"
+className="input input-bordered w-full max-w-xs"
 {...register("email", {
   required:{
       value:true,
@@ -60,23 +60,23 @@ class="input input-bordered w-full max-w-xs"
   }
 })}
 />
-<label class="label">
-{errors.email?.type==='required' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
-{errors.email?.type==='pattern' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
+<label className="label">
+{errors.email?.type==='required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+{errors.email?.type==='pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
   
 </label>
 </div>
 
 
 
-<div class="form-control w-full max-w-xs">
-  <label class="label">
-    <span class="label-text">Password</span>
+<div className="form-control w-full max-w-xs">
+  <label className="label">
+    <span className="label-text">Password</span>
   </label>
   <input
   type="password"
   placeholder="Password"
-  class="input input-bordered w-full max-w-xs"
+  className="input input-bordered w-full max-w-xs"
   {...register("password", {
     required:{
         value:true,
@@ -88,21 +88,21 @@ class="input input-bordered w-full max-w-xs"
     }
   })}
   />
-  <label class="label">
-  {errors.password?.type==='required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
-  {errors.password?.type==='minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
+  <label className="label">
+  {errors.password?.type==='required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+  {errors.password?.type==='minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
     
   </label>
   </div>
 
-  <div class="form-control w-full max-w-xs">
-  <label class="label">
-    <span class="label-text">Reenter Password</span>
+  <div className="form-control w-full max-w-xs">
+  <label className="label">
+    <span className="label-text">Reenter Password</span>
   </label>
   <input
   type="password"
   placeholder="Password"
-  class="input input-bordered w-full max-w-xs"
+  className="input input-bordered w-full max-w-xs"
   {...register("repassword", {
     required:{
         value:true,
@@ -114,10 +114,10 @@ class="input input-bordered w-full max-w-xs"
     }
   })}
   />
-  <label class="label">
-  {errors.password?.type==='required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
-  {errors.password?.type==='minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
-  {passMissMatch && <span class="label-text-alt text-red-500">Passwords did not match.</span>}
+  <label className="label">
+  {errors.password?.type==='required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+  {errors.password?.type==='minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+  {passMissMatch && <span className="label-text-alt text-red-500">Passwords did not match.</span>}
   </label>
   </div>
 

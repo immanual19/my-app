@@ -36,7 +36,7 @@ const Login = () => {
       else{
           setRemMe(false);
       }
-      console.log("Remember me Checked");
+      //console.log("Remember me Checked");
   }
   
     return (
