@@ -27,6 +27,7 @@ import { signOut } from 'firebase/auth';
 import MainSetup from '../MainSetup/MainSetup';
 import Table1 from '../Tables/Table1';
 import Tables from '../Tables/Tables';
+import Navbar from '../../Shared/Loading/Navbar/Navbar';
 
 const drawerWidth = 240;
 
@@ -164,26 +165,13 @@ export default function Dashboard(props: Props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
+      position="fixed"
+      sx={{
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        ml: { sm: `${drawerWidth}px` },
+      }}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Example Application
-          </Typography>
-        </Toolbar>
+        <Navbar></Navbar>
       </AppBar>
       <Box
         component="nav"
