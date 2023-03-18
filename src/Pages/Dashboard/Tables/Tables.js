@@ -20,6 +20,8 @@ $.post('http://127.0.0.1:8080/wang/api/QueryFiles', { AccessToken: str, Status: 
   .done(function(returnedData) {
     if (returnedData.rspCode === '200') {
       console.log(returnedData.rspData);
+      const dataString = JSON.stringify(returnedData.rspData);
+      localStorage.setItem("myData", dataString);
       //setData2(returnedData.rspData);
       setData1(returnedData.rspData);
     } else {

@@ -21,8 +21,8 @@ const Table3=({fileInfo})=> {
       
       <tr>
         
-        <td>Cy Ganderton</td>
-        <td>"SOMETHING"</td>
+        <td>Data From Backend</td>
+        <td>Data From Backend</td>
         <button className="btn btn-accent mx-2">Download</button>
         <button className="btn btn-accent mx-2">Del</button>
         <button className="btn btn-accent mx-2">Clone</button>
@@ -31,8 +31,8 @@ const Table3=({fileInfo})=> {
       
       <tr>
         
-        <td>Hart Hagerty</td>
-        <td>Desktop Support Technician</td>
+        <td>Data From Backend</td>
+        <td>Data From Backend</td>
         <button className="btn btn-accent mx-2">Download</button>
         <button className="btn btn-accent mx-2">Del</button>
         <button className="btn btn-accent mx-2">Clone</button>

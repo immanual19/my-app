@@ -13,13 +13,13 @@ const AddUser = ({setAddUser}) => {
         <div className="modal modal-bottom sm:modal-middle xl:modal-xl">
           <div className="modal-box">
           <div class="grid grid-cols-12 gap-4">
-  <div class="col-span-5">
+  <div class="col-span-4">
     <div class="overflow-x-auto w-full">
       <table class="table w-full">
         <thead>
           <tr>
             <th>Check</th>
-            <th>ForeignText</th>
+            <th>Text</th>
             <th></th>
           </tr>
         </thead>
@@ -72,7 +72,7 @@ const AddUser = ({setAddUser}) => {
 </div>
           </div>
          
-          <div class="col-span-7">
+          <div class="col-span-8">
           <h4>Account</h4>
           <p>Foreign Text: A</p>
 <form>
@@ -99,7 +99,40 @@ const AddUser = ({setAddUser}) => {
   </label>
 </div>
 <input className= 'flex btn w-full max-w-xs mx-auto items-center' type="submit" value='Add'/>
-</form>     
+</form>  
+
+<div class="overflow-x-auto mt-2">
+  <table class="table table-compact w-full">
+    <thead>
+      <tr>
+        
+        <th>Text</th> 
+        <th>Text</th> 
+        <th></th> 
+        
+      </tr>
+    </thead> 
+    <tbody>
+      <tr>
+        
+        <td>08475920128</td> 
+        <td>Card Alam</td> 
+        <td><button class="btn btn-sm">Button</button></td> 
+        
+      </tr>
+      <tr>
+        
+        <td>3186584</td> 
+        <td>Alam Tay</td> 
+        <td><button class="btn btn-sm">Button</button></td> 
+        
+      </tr>
+      
+    </tbody> 
+    <tfoot>
+    </tfoot>
+  </table>
+</div>
           </div>
         </div>
 

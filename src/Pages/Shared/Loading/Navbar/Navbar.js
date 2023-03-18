@@ -1,6 +1,17 @@
 import React from 'react';
 
 const Navbar = () => {
+
+  // Get the stringified data from local storage
+const dataString = localStorage.getItem("myData");
+
+// Parse the stringified data back to an array of objects
+const data = JSON.parse(dataString);
+const filteredData = data.filter((_, index) => index < 10);
+// Use the retrieved data as needed
+console.log(filteredData);
+
+
     return (
         <div>
         <div class="navbar bg-black">
@@ -37,7 +48,19 @@ const Navbar = () => {
           <li tabindex="0">
             <a class="text-white">Dropdown menu C</a>
             <ul class="p-2 bg-black">
-              <li><a class="text-white">Submenu 3</a></li>
+
+            {
+              filteredData.map((data, index) => (
+                <li key={index}>
+                  <a className="text-white" contentEditable>{data.name}</a>
+                  <button className="btn btn-accent mx-2">Del</button>
+                  <br />
+                  <button className="btn btn-accent mx-2">{data.name}</button>
+                </li>
+              ))
+              
+            }
+              
             </ul>
           </li>
         </ul>

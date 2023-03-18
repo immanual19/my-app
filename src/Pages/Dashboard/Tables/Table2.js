@@ -43,8 +43,8 @@ useEffect(()=>{
       
       <tr>
         
-        <td>Cy Ganderton</td>
-        <td>Something</td>
+        <td>Data From Backend</td>
+        <td>Data From Backend</td>
         <button className="btn btn-accent mx-2">Download</button>
         <button className="btn btn-accent mx-2">Del</button>
         <button className="btn btn-accent mx-2">Clone</button>
@@ -53,8 +53,8 @@ useEffect(()=>{
       
       <tr>
         
-        <td>Hart Hagerty</td>
-        <td>Desktop Support Technician</td>
+        <td>Data From Backend</td>
+        <td>Data From Backend</td>
         <button className="btn btn-accent mx-2">Download</button>
         <button className="btn btn-accent mx-2">Del</button>
         <button className="btn btn-accent mx-2">Clone</button>
