@@ -28,6 +28,7 @@ import MainSetup from '../MainSetup/MainSetup';
 import Table1 from '../Tables/Table1';
 import Tables from '../Tables/Tables';
 import Navbar from '../../Shared/Loading/Navbar/Navbar';
+import Authority from '../Authority/Authority';
 
 const drawerWidth = 240;
 
@@ -45,6 +46,7 @@ export default function Dashboard(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [table,setTable]=React.useState(false);
+  const [authority,setAuthority]=React.useState(false);
   const navigate = useNavigate();
   const [mainSetup, setMainSetup]=React.useState(true);
   const [login,setLogin]=React.useState(true);
@@ -79,15 +81,15 @@ export default function Dashboard(props: Props) {
 
   const ListData=[
    {
-      name: "Option1",
+      name: "Upload",
       icon: <AttachmentIcon></AttachmentIcon>
    },
    {
-      name: "Option2",
+      name: "Show Status",
       icon: <MailIcon></MailIcon>
    },
    {
-      name: "Option3",
+      name: "Authority Setting",
       icon: <GridOnIcon></GridOnIcon>
    },
    {
@@ -105,26 +107,31 @@ export default function Dashboard(props: Props) {
    {
       setTable(false);
       setMainSetup(true);
+      setAuthority(false);
        //console.log("Clicked ",index);
    }
    else if(index===1){
       setTable(true);
       setMainSetup(false);
+      setAuthority(false);
       //console.log("Clicked ",index);
    }
    else if(index===2){
       setTable(false);
       setMainSetup(false);
+      setAuthority(true);
       //console.log("Clicked ",index);
    }
    else if(index===3){
     setTable(false);
       setMainSetup(false);
+      setAuthority(false);
       //console.log("Clicked ",index);
    }
    else if(index===4){
     setTable(false);
       setMainSetup(false);
+      setAuthority(false);
      //  console.log("logout clicked");
       logout();
    }
@@ -217,6 +224,9 @@ export default function Dashboard(props: Props) {
         {
           table && <Tables fileInfo={fileInfo}></Tables>
           
+        }
+        {
+          authority && <Authority></Authority>
         }
         
       </Box>
