@@ -32,7 +32,7 @@ console.log(filteredData);
                 <a class="text-white">Submenu Title1</a>
                 <ul class="p-2 bg-black">
                 <li><a class="text-white"><input type="text" placeholder="Input" class="input input-ghost w-full max-w-xs" /></a></li>
-                <li><a class="text-white"><input type="text" placeholder="Output" class="input input-ghost w-full max-w-xs" /></a></li>
+                <li><a class="text-white"><input type="text" placeholder="Output" class="input input-ghost w-full max-w-xs"/></a></li>
                   <li><a class="text-white"><button class="btn btn-sm">Add Manual</button></a></li>
                   
                 </ul>
@@ -41,7 +41,7 @@ console.log(filteredData);
               <a class="text-white">Submenu Title1</a>
               <ul class="p-2 bg-black">
               <li><a class="text-white"><input type="text" placeholder="Input" class="input input-ghost w-full max-w-xs" /></a></li>
-              <li><a class="text-white"><input type="text" placeholder="Output" class="input input-ghost w-full max-w-xs" /></a></li>
+              <li><a class="text-white"><input type="text" placeholder="Output" class="input input-ghost w-full max-w-xs"/></a></li>
                 <li><a class="text-white"><button class="btn btn-sm">Add Manual</button></a></li>
                
               </ul>
