@@ -29,20 +29,25 @@ console.log(filteredData);
             <a class="text-white">Menu B</a>
             <ul class="p-2 bg-black">
               <li tabindex="0">
-                <a class="text-white">Submenu 2.1</a>
+                <a class="text-white">Submenu Title1</a>
                 <ul class="p-2 bg-black">
-                  <li><a class="text-white">Submenu 2.1.1</a></li>
-                  <li><a class="text-white">Submenu 2.1.2</a></li>
+                <li><a class="text-white"><input type="text" placeholder="Input" class="input input-ghost w-full max-w-xs" /></a></li>
+                <li><a class="text-white"><input type="text" placeholder="Output" class="input input-ghost w-full max-w-xs" /></a></li>
+                  <li><a class="text-white"><button class="btn btn-sm">Add Manual</button></a></li>
+                  
                 </ul>
               </li>
               <li tabindex="0">
-                <a class="text-white">Submenu 2.1</a>
-                <ul class="p-2 bg-black">
-                  <li><a class="text-white">Submenu 2.1.1</a></li>
-                  <li><a class="text-white">Submenu 2.1.2</a></li>
-                </ul>
-              </li>
-              <li><a class="text-white">Submenu 2.2</a></li>
+              <a class="text-white">Submenu Title1</a>
+              <ul class="p-2 bg-black">
+              <li><a class="text-white"><input type="text" placeholder="Input" class="input input-ghost w-full max-w-xs" /></a></li>
+              <li><a class="text-white"><input type="text" placeholder="Output" class="input input-ghost w-full max-w-xs" /></a></li>
+                <li><a class="text-white"><button class="btn btn-sm">Add Manual</button></a></li>
+               
+              </ul>
+            </li>
+            
+          
             </ul>
           </li>
           <li tabindex="0">

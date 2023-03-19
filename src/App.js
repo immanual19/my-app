@@ -9,12 +9,16 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 function App() {
   const navigate = useNavigate();
-
+  let token = document.cookie;
+  let index = token.indexOf('token=');
+  if (index !== -1) {
+    token = token.substring(0, index) + token.substring(index + 6);
+  }
   useEffect(() => {
-    if (document.cookie.token) {
+    if (token) {
       navigate('/dashboard');
     }
-  }, [document.cookie.token, navigate]);
+  }, [token, navigate]);
 
   return (
     <div className="App">

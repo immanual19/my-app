@@ -15,6 +15,7 @@ const Login = () => {
       $.post('http://127.0.0.1:8080/wang/api/Login', { User: data.email, Pwd: data.password })
     .done(function(returnedData) {
       if (returnedData.rspCode === '200') {
+        console.log(returnedData);
         const expires = new Date(Date.now() + 86400 * 1000).toUTCString();
         document.cookie = "token=" + returnedData.rspData[0].token + ";expires=" + expires + ";path=/";
         navigate('/dashboard');
